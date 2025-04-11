@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #242424;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 25px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    margin: 20px 0;
+    position: relative;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background: #ddd;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 40px;
+}
+
+.cell:hover {
+    background: #f0f0f0;
+}
+
+.game-status {
+    font-size: 20px;
+}
+
+.reset-btn {
+    border: 0;
+    background: dodgerblue;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 16px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s all;
+}
+
+.reset-btn:hover {
+    background: rgb(0, 91, 182);
+}
+
+.mark {
+    background: dodgerblue;
+}
+
+.mark:hover {
+    background: dodgerblue;
+}
+
+.cross-line {
+    position: absolute;
+    height: 6px;
+    width: 300px;
+    background-color: black;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 4px;
+    transform-origin: center center;
+    display: none;
+}
