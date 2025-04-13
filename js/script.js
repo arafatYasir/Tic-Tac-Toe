@@ -30,10 +30,10 @@ function handleClick(e) {
     cell.innerText = player;
 
     // checking both winner and getting the winning combination
-    const winner = checkWinner();
+    let winner = checkWinner();
     if (winner) {
         gameActive = false;
-        document.querySelector(".game-status").innerHTML = `The winner is: ${player}`;
+        document.querySelector(".game-status").innerHTML = `The winner is: Player`;
         drawLine(winner);
         // highlight();
         return;
@@ -45,8 +45,35 @@ function handleClick(e) {
         return;
     }
 
-    player = player === "X" ? "O" : "X";
-    document.querySelector(".game-status").innerHTML = `Player ${player}'s turn`;
+    player = "O";
+    document.querySelector(".game-status").innerHTML = `Computer's turn`;
+
+    // now computers move
+    let computerMove;
+
+    // while computer is not getting a valid move the loop will continue
+    while (1) {
+        computerMove = parseInt(Math.random() * 9);
+
+        if (gameBoard[computerMove] === "") {
+            setTimeout(() => {
+                gameBoard[computerMove] = player;
+                document.querySelector(`.cell[data-index="${computerMove}"]`).innerText = player;
+
+                player = "X";
+                document.querySelector(".game-status").innerHTML = `Your turn`;
+
+                winner = checkWinner();
+                if (winner) {
+                    gameActive = false;
+                    document.querySelector(".game-status").innerHTML = `The winner is: Computer`;
+                    drawLine(winner);
+                }
+            }, 600);
+            break;
+        }
+
+    }
 }
 
 function checkWinner() {
